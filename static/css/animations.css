@@ -1,0 +1,54 @@
+/* static/css/animations.css */
+
+/* Плавное появление результатов */
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.results-fade-in {
+    animation: fadeInSlide 0.6s ease-out forwards;
+}
+
+/* Пульсация неона для BPM */
+@keyframes neonPulse {
+    0% {
+        text-shadow: 0 0 10px rgba(34, 211, 238, 0.4);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(34, 211, 238, 0.8), 0 0 30px rgba(34, 211, 238, 0.4);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(34, 211, 238, 0.4);
+    }
+}
+
+.bpm-display span {
+    animation: neonPulse 2s infinite ease-in-out;
+}
+
+/* Эффект свечения при Drag over */
+@keyframes dropZonePulse {
+    0% {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 rgba(139, 92, 246, 0);
+    }
+    50% {
+        border-color: var(--accent-color);
+        box-shadow: 0 0 15px rgba(34, 211, 238, 0.5);
+    }
+    100% {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 rgba(139, 92, 246, 0);
+    }
+}
+
+.drop-zone.over {
+    animation: dropZonePulse 1.5s infinite;
+}
