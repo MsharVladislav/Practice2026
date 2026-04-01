@@ -1,15 +1,12 @@
-/* static/css/style.css */
-
-/* Переменные для Dark Mode и музыкального стиля */
 :root {
-    --bg-color: #121418;       /* Очень темно-серый, почти черный */
-    --card-bg: rgba(30, 34, 39, 0.8); /* ПОЛУПРОЗРАЧНЫЙ ДЛЯ ФОНА */
-    --text-main: #e0e6ed;      /* Светло-серый для текста */
-    --text-muted: #8899a6;    /* Мутный для подписей */
-    --primary-color: #8b5cf6;  /* Яркий фиолетовый/неон */
+    --bg-color: #121418;
+    --card-bg: rgba(30, 34, 39, 0.8);
+    --text-main: #e0e6ed;
+    --text-muted: #8899a6;
+    --primary-color: #8b5cf6;
     --primary-hover: #7c3aed;
-    --accent-color: #22d3ee;   /* Циановый акцент */
-    --border-color: #2d3748;   /* Используется и для частиц! */
+    --accent-color: #22d3ee;
+    --border-color: #2d3748;
     --error-color: #ef4444;
     --border-radius-lg: 16px;
     --border-radius-md: 8px;
@@ -24,41 +21,38 @@
 
 body {
     font-family: var(--font-family);
-    /* Добавляем глубокий студийный градиент (от темно-фиолетового к черному) */
     background: radial-gradient(circle at top center, #231b38 0%, var(--bg-color) 60%);
-    background-attachment: fixed; /* Фон не будет скроллиться вместе с графиками */
+    background-attachment: fixed;
     color: var(--text-main);
     line-height: 1.6;
     padding: 30px 10px;
-    min-height: 100vh; /* Гарантируем, что фон на весь экран */
+    min-height: 100vh;
 }
 
-/* Настройки Canvas на фоне */
 #bgCanvas {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1; /* Самый низ */
-    pointer-events: none; /* Чтобы не мешал кликам */
+    z-index: 1;
+    pointer-events: none;
 }
 
-/* Контент поверх фона */
 .relative-content {
     position: relative;
     z-index: 2;
 }
 
 .container {
-    max-width: 1200px; /* Широкий дашборд */
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 /* Шапка */
 .main-header {
     text-align: center;
-    margin-bottom: 30px; /* Уменьшим отступ */
+    margin-bottom: 30px;
 }
 
 .logo {
@@ -76,7 +70,6 @@ body {
     font-weight: 300;
 }
 
-/* --- Зона загрузки (Выровненная и Компактная) --- */
 .upload-section {
     margin-bottom: 50px;
     display: flex;
@@ -84,19 +77,18 @@ body {
     align-items: center;
 }
 
-/* Делаем форму строгим контейнером */
 #uploadForm {
     width: 100%;
-    max-width: 600px; /* Задаем ширину всему блоку сразу */
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px; /* Единый, ровный отступ между рамкой и кнопкой */
+    gap: 20px;
 }
 
 .drop-zone {
-    width: 100%; /* Тянется ровно на 600px от родителя */
-    height: 160px; /* Дадим чуть больше "воздуха" по вертикали */
+    width: 100%;
+    height: 160px;
     padding: 20px;
     display: flex;
     align-items: center;
@@ -116,7 +108,6 @@ body {
     background-color: rgba(37, 42, 49, 0.9);
 }
 
-/* Прячем стандартный input */
 .drop-zone input[type="file"] {
     position: absolute;
     width: 100%;
@@ -145,7 +136,7 @@ body {
 }
 
 .drop-zone-prompt {
-    font-size: 1rem; /* Чуть меньше */
+    font-size: 1rem;
 }
 
 .file-name {
@@ -155,18 +146,16 @@ body {
     word-break: break-all;
 }
 
-/* Кнопка */
-/* Кнопка */
 .btn-primary {
-    width: 100%; /* Теперь кнопка идеально совпадает по ширине с пунктирной зоной */
-    margin-top: 0; /* Убрали старый отступ, так как работает gap в форме */
+    width: 100%;
+    margin-top: 0;
     background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
     color: white;
     border: none;
-    padding: 16px 35px; /* Сделаем её чуть повыше */
+    padding: 16px 35px;
     font-size: 1.1rem;
     font-weight: 600;
-    letter-spacing: 1px; /* Разрядим текст, чтобы на широкой кнопке он смотрелся лучше */
+    letter-spacing: 1px;
     border-radius: var(--border-radius-md);
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
@@ -185,13 +174,11 @@ body {
     cursor: not-allowed;
 }
 
-/* --- Dashboard Layout (СТРОГИЙ ПОРЯДОК) --- */
 .dashboard {
     display: grid;
-    /* Левая колонка фиксированная, правая занимает остальное */
     grid-template-columns: 320px 1fr; 
     gap: 25px;
-    align-items: start; /* Не растягиваем карточки по высоте */
+    align-items: start;
 }
 
 .dash-col-left, .dash-col-right {
@@ -200,7 +187,6 @@ body {
     gap: 25px;
 }
 
-/* Карточки */
 .card {
     background: var(--card-bg);
     border-radius: var(--border-radius-lg);
@@ -208,10 +194,9 @@ body {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
     overflow: hidden; 
     transition: all 0.3s ease;
-    backdrop-filter: blur(5px); /* Легкий блюр фона */
+    backdrop-filter: blur(5px);
 }
 
-/* Легкий подъем при ховере */
 .card:hover {
     transform: translateY(-5px);
     border-color: rgba(139, 92, 246, 0.5);
@@ -234,7 +219,7 @@ body {
 /* BPM */
 .bpm-card {
     text-align: center;
-    height: 180px; /* Фиксированная высота */
+    height: 180px;
 }
 
 .bpm-display {
@@ -243,7 +228,7 @@ body {
 }
 
 #bpmValue {
-    font-size: 4.5rem; /* Ещё больше */
+    font-size: 4.5rem;
     font-weight: 700;
     line-height: 1;
 }
@@ -282,7 +267,6 @@ body {
     transform: scale(1.05);
 }
 
-/* Графики - Контейнеры */
 #waveform, #spectrogramChart, #mfccChart {
     width: 100%;
     height: 250px;
@@ -294,7 +278,6 @@ body {
     margin: 10px 0;
 }
 
-/* Spinner и Ошибки */
 #loading {
     margin-top: 30px;
     color: var(--text-muted);
@@ -325,9 +308,8 @@ body {
 
 .hidden { display: none !important; }
 
-/* Адаптивность */
 @media (max-width: 900px) {
     .dashboard {
-        grid-template-columns: 1fr; /* Одна колонка на мобильных */
+        grid-template-columns: 1fr;
     }
 }

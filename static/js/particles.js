@@ -1,5 +1,3 @@
-/* static/js/particles.js */
-
 class ParticleSystem {
     constructor(canvasId) {
         this.canvas = document.getElementById(canvasId);
@@ -9,10 +7,8 @@ class ParticleSystem {
 
         window.addEventListener('resize', () => this.resize());
 
-        // Настройки частиц
         this.particleCount = 70;
         this.connectionDistance = 150;
-        // Используем CSS переменные для цветов
         this.color = getComputedStyle(document.documentElement).getPropertyValue('--border-color').trim();
     }
 
@@ -27,7 +23,7 @@ class ParticleSystem {
             this.particles.push({
                 x: Math.random() * this.canvas.width,
                 y: Math.random() * this.canvas.height,
-                vx: (Math.random() - 0.5) * 0.4, // Медленная скорость
+                vx: (Math.random() - 0.5) * 0.4,
                 vy: (Math.random() - 0.5) * 0.4,
                 radius: Math.random() * 2 + 1
             });
@@ -39,7 +35,6 @@ class ParticleSystem {
             p.x += p.vx;
             p.y += p.vy;
 
-            // Отражение от стен
             if (p.x < 0 || p.x > this.canvas.width) p.vx = -p.vx;
             if (p.y < 0 || p.y > this.canvas.height) p.vy = -p.vy;
         });
@@ -54,12 +49,10 @@ class ParticleSystem {
         for (let i = 0; i < this.particles.length; i++) {
             const p1 = this.particles[i];
             
-            // Отрисовка точки
             this.ctx.beginPath();
             this.ctx.arc(p1.x, p1.y, p1.radius, 0, Math.PI * 2);
             this.ctx.fill();
 
-            // Отрисовка линий соединения
             for (let j = i + 1; j < this.particles.length; j++) {
                 const p2 = this.particles[j];
                 const dx = p1.x - p2.x;
@@ -75,7 +68,7 @@ class ParticleSystem {
                 }
             }
         }
-        this.ctx.globalAlpha = 1; // Сброс прозрачности
+        this.ctx.globalAlpha = 1;
     }
 
     animate() {
@@ -85,7 +78,6 @@ class ParticleSystem {
     }
 }
 
-// Запуск при загрузке
 document.addEventListener('DOMContentLoaded', () => {
     const system = new ParticleSystem('bgCanvas');
     system.init();
